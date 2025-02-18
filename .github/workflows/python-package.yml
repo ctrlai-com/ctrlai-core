@@ -55,11 +55,11 @@ jobs:
       timeout-minutes: 2
         
     - name: Type checking
-      run: poetry run mypy validation
+      run: poetry run mypy ctrlai_core
       timeout-minutes: 2
 
     - name: Lint
-      run: poetry run flake8 validation tests --max-line-length=120 --extend-ignore=E203 --exclude=.git,__pycache__,build,dist
+      run: poetry run flake8 ctrlai_core tests --max-line-length=120 --extend-ignore=E203 --exclude=.git,__pycache__,build,dist
       timeout-minutes: 2
 
     - name: Commit formatting changes
