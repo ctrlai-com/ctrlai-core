@@ -6,7 +6,7 @@ from uuid import UUID, uuid4
 import pytest
 from pydantic import ValidationError
 
-from validation.models import CtrlAI, CtrlAIGroup
+from ctrlai_core.models import CtrlAI, CtrlAIGroup
 
 
 def test_valid_ctrlai():

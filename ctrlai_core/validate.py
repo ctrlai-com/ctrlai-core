@@ -1,4 +1,4 @@
-# ctrlai-core/validation/validate.py
+# ctrlai_core/validation/validate.py
 
 """
 CtrlAI Validation Module

@@ -38,7 +38,7 @@ Documentation = "https://ctrlai-core.readthedocs.io/"
 
 [tool.poetry]
 name = "ctrlai-core"
-version = "1.0.0"
+version = "1.0.1"
 description = "Core functionality for Ctrl AI"
 authors = ["Ctrl AI Team <info@ctrlai.com>"]
 packages = [
@@ -76,5 +76,5 @@ disallow_untyped_defs = true
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
-addopts = "--cov=validation --cov-report=term-missing"
+addopts = "--cov=ctrlai_core --cov-report=term-missing"
 pythonpath = ["."] 

@@ -5,7 +5,7 @@ import pytest
 from jsonschema import ValidationError as JsonSchemaValidationError
 from pydantic import ValidationError as PydanticValidationError
 
-from validation.validate import (
+from ctrlai_core.validate import (
     validate_ctrlai_embedding,
     validate_ctrlai_group,
     validate_ctrlai_json,

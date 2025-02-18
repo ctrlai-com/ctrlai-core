@@ -1,4 +1,4 @@
-# ctrlai-core/validation/models.py
+# ctrlai_core/models.py
 from datetime import datetime
 from typing import (
     List,
