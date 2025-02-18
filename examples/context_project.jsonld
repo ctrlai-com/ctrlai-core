@@ -1,0 +1,32 @@
+{
+    "@context": [
+      "https://schema.org/",
+      "https://ctrlai.com/schema/"
+    ],
+    "@type": "CtrlAI",
+    "id": "urn:uuid:b2c3d4e5-f6a7-8901-2345-67890abcdef1",
+    "userId": "urn:uuid:f0e9d8c7-b6a5-4321-fedc-ba9876543210",
+    "ctrlaiGroupId": "urn:uuid:01234567-89ab-cdef-0123-456789abcdef",
+    "type": "context:project",
+    "value": {
+      "@type": "ProjectContext",
+      "name": "Project Alpha",
+      "description": "AI-powered customer service automation",
+      "deadline": "2024-12-31T23:59:59Z",
+      "status": "in_progress",
+      "team": ["Alice", "Bob", "Charlie"],
+      "objectives": [
+        "Reduce response time by 50%",
+        "Achieve 90% customer satisfaction"
+      ]
+    },
+    "source": "projectManagementSystem",
+    "confidence": 1.0,
+    "dateCreated": "2024-02-17T09:00:00Z",
+    "dateModified": "2024-02-17T09:00:00Z",
+    "expires": "2024-12-31T23:59:59Z",
+    "validFrom": "2024-02-17T09:00:00Z",
+    "scope": "project:ProjectAlpha",
+    "keywords": ["project", "automation", "customer-service", "ai"],
+    "relatedEntities": []
+}

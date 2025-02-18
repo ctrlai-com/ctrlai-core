@@ -1,0 +1,250 @@
+# Ctrl AI Blueprint
+
+**Version:** 1.0 
+**Date:** 2025-02-17
+
+## 1. Introduction
+
+Ctrl AI is an open-source project building the foundation for a new era of human-AI collaboration. We are creating a standardized protocol for managing *Ctrl AIs*, empowering individuals and organizations to control their AI interactions, enhance AI performance, and unlock the full potential of AI assistants.
+
+**Problem Statement:** Current AI systems often lack context, leading to inefficiency and suboptimal results. Users repeatedly provide the same information, and organizations struggle to share knowledge effectively. Concerns about data privacy and control hinder AI adoption. Existing solutions lack the fine-grained control, personalization, and interoperability needed for seamless collaboration.
+
+**Vision Statement:** To become the universal standard for personalized AI knowledge, empowering individuals and organizations to control their AI interactions and unlock the full potential of human-AI collaboration.
+
+**Target Audience:**
+* **Individuals:** Anyone who uses AI tools
+* **Organizations:** Businesses, non-profits, educational institutions, government agencies
+* **Developers:** Building AI-powered applications
+* **AI Agents:** Autonomous AI systems
+
+**Key Benefits of Ctrl AI:**
+* **Enhanced AI Performance:** Provide AI agents with rich, contextual information
+* **Increased Efficiency:** Reduce the need to repeatedly provide context
+* **Improved Control:** Give users fine-grained control over information access
+* **Enhanced Privacy:** Protect user data with strong security and access control
+* **Interoperability:** Enable seamless integration with a wide range of AI tools
+* **Collaboration:** Facilitate knowledge sharing
+* **Extensibility:** Provide a flexible platform that can evolve
+* **Open Standard:** Easy to implement in any project
+
+## 2. Guiding Principles
+
+* **Openness:** The protocol and core components are open-source and built on open standards (JSON-LD, Schema.org, OAuth 2.0, OpenID Connect)
+* **Privacy:** Users have complete control over their data. Data minimization, encryption, and granular access control are paramount
+* **User Control:** Users define *what* AI can access *what* information and *under what conditions*
+* **Interoperability:** Ctrl AI is designed to work seamlessly with a wide range of AI tools
+* **Extensibility:** The protocol is designed to be easily extended
+* **Simplicity:** Ctrl AI is designed to be easy to use and integrate
+* **Security:** Security is a top priority
+
+## 3. Use Cases
+
+### 3.1. Personalized Email Drafting
+* **Scenario:** A user wants to draft an email to their team
+* **With Ctrl AI:** The AI assistant queries the user's Ctrl AI, retrieving project information, writing style preferences, deadlines, and team members
+* **Result:** A more relevant and personalized email draft
+
+### 3.2. Context-Aware Customer Support
+* **Scenario:** A customer contacts support with a question about an order
+* **With Ctrl AI:** The AI assistant queries the company's Ctrl AI, retrieving customer and order details
+* **Result:** Faster and more efficient customer service
+
+**3.3. Automated Meeting Scheduling:**
+
+*   **Scenario:** A user wants to schedule a meeting.
+*   **With Ctrl AI:** The AI assistant accesses calendars and communication preferences (with permission).
+*   **Result:** Automatic scheduling and invitations.
+
+**3.4. Intelligent Code Completion:**
+
+*   **Scenario:** A developer is writing code.
+*   **With Ctrl AI:** The code completion tool accesses project information, coding style, and API documentation.
+*   **Result:** More relevant and context-aware suggestions.
+
+**3.5. Company Knowledge Management:**
+
+*   **Scenario:** An employee needs information about a company policy.
+*   **With Ctrl AI:** The employee queries the company's Ctrl AI.
+*   **Result:** Quick and easy access to information.
+
+**3.6. AI App Integration (The "AI App Store" Concept):**
+
+*   **Scenario:** A user wants to use a new AI-powered task management app.
+*   **With Ctrl AI:** The user authorizes the app to access their Ctrl AI (goals and calendar). The app automatically imports tasks and deadlines.
+*   **Result:** Seamless onboarding and integration.
+
+## 4. Architecture Overview
+
+Ctrl AI is designed as a distributed system with a focus on a standardized protocol for data exchange. The core components are:
+
+* **Ctrl AI Data:** Structured information represented in JSON-LD, adhering to the Ctrl AI schema and vocabulary
+* **API:** A RESTful API for creating, reading, updating, deleting, and querying Ctrl AI data
+* **Authentication and Authorization:** OAuth 2.0 and OpenID Connect for secure access control
+* **Clients:** Applications and AI agents
+
+**Technology Stack (Generic):**
+
+The Ctrl AI protocol is *independent* of any specific technology stack. However, reference implementations and tools may be provided using various technologies. The protocol itself relies on:
+
+* **JSON-LD:** For data representation
+* **Schema.org:** For a base vocabulary
+* **Custom Vocabulary:** For Ctrl AI-specific types and properties
+* **OAuth 2.0 / OpenID Connect:** For authentication and authorization
+* **RESTful API Principles:** For data access
+
+## 5. Ctrl AI Protocol Specification
+
+### 5.1. Data Model
+
+* **Core Entity:** "Ctrl AI" (representing a single piece of information)
+* **Format:** JSON-LD
+* **Schema:** A combination of Schema.org and a custom Ctrl AI vocabulary
+
+#### 5.1.1. Ctrl AI Structure (JSON-LD Example)
+
+```json
+{
+  "@context": [
+    "https://schema.org/",
+    "https://ctrlai.com/schema/"
+  ],
+  "@type": "CtrlAI",
+  "id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "userId": "urn:uuid:f0e9d8c7-b6a5-4321-fedc-ba9876543210",
+  "ctrlaiGroupId": "urn:uuid:01234567-89ab-cdef-0123-456789abcdef",
+  "type": "preference:dietary",
+  "value": {
+    "@type": "DietaryRestriction",
+    "name": "Vegetarian"
+  },
+  "source": "userInput",
+  "confidence": 0.9,
+  "dateCreated": "2024-01-27T14:30:00Z",
+  "dateModified": "2024-01-27T14:30:00Z",
+  "expires": null,
+  "validFrom": null,
+  "scope": "personal",
+  "keywords": ["food", "vegetarian"],
+  "relatedEntities": []
+}
+```
+
+#### 5.1.2. Ctrl AI Properties
+
+| Property | Data Type | Description | Required |
+|----------|-----------|-------------|-----------|
+| @context | array of strings | JSON-LD context, defining vocabularies | Yes |
+| @type | string | Type of the entity (must be "CtrlAI") | Yes |
+| id | string (URN) | Unique identifier for the Ctrl AI (UUID) | Yes |
+| userId | string (URN) | Identifier of the user who owns the Ctrl AI | Yes |
+| ctrlaiGroupId | string (URN) | Identifier of the Ctrl AI group | Yes |
+| type | string | Type of Ctrl AI | Yes |
+| value | object or string | The actual content of the Ctrl AI | Yes |
+| source | string | Source of the information | Yes |
+| confidence | float | Confidence level (0.0 to 1.0) | Yes |
+| dateCreated | string (ISO 8601) | Timestamp of creation | Yes |
+| dateModified | string (ISO 8601) | Timestamp of last modification | Yes |
+| expires | string (ISO 8601) | Timestamp when the Ctrl AI expires | No |
+| validFrom | string (ISO 8601) | Timestamp when the Ctrl AI becomes valid | No |
+| scope | string | Scope of the information | Yes |
+| keywords | array of strings | User-defined keywords | No |
+| relatedEntities | array of strings | Links to other entities | No |
+
+#### 5.1.3. Ctrl AI Types (Examples - Not Exhaustive):
+
+preference:dietary
+preference:communication_style
+preference:writing_style
+preference:personality
+context:project
+context:location
+context:time_sensitive
+context:goal
+knowledge:company_fact
+knowledge:product_spec
+knowledge:competitor_info
+knowledge:personal_fact
+knowledge:calendar
+knowledge:skills
+knowledge:external
+... (and many more, including custom types)
+
+#### 5.1.4. Custom Vocabulary (https://ctrlai.com/schema/ - Placeholder):
+
+See the complete Custom Vocabulary Definition for details.
+
+#### 5.1.5 JSON Schema:
+JSON Schema is defined in schema.json
+
+### 5.2. API Specification
+
+The Ctrl AI API is a RESTful API that allows clients to interact with Ctrl AI data. The API is formally defined using OpenAPI (Swagger).
+
+* **Base URL:** `[Implementation-Specific URL]/v1`
+* **Authentication:** OAuth 2.0 and OpenID Connect
+* **Data Formats:**
+  * Request Body: `application/json`
+  * Response Body: `application/json` (with JSON-LD support)
+
+**Key Principles:**
+* Data is represented as Ctrl AI entities (JSON-LD)
+* Standard HTTP methods (GET, POST, PUT, DELETE) for CRUD operations
+* Filtering and searching via query parameters
+* Authentication via OAuth 2.0/OpenID Connect
+
+### 5.3. Authentication and Authorization
+
+* **Authentication:** OAuth 2.0 and OpenID Connect
+* **Authorization Levels:**
+  * User-Level: Control over AI agent access
+  * Organizational-Level: Role-Based Access Control (RBAC)
+  * Granular Permissions: Type, scope, and metadata-based access
+
+### 5.4. Interaction Model
+
+Querying:
+Intent and Context Extraction: An LLM analyzes the user's prompt.
+Metadata Filter Generation: The LLM generates metadata filters.
+Vector Search: An embedding of the user's prompt is generated.
+Data Retrieval: A query is sent to the data store, combining vector search and metadata filtering.
+Result Ranking: Results are ranked by similarity, confidence, recency, and source.
+Context Injection: Top-ranked Ctrl AIs are injected into the LLM's context.
+Response Generation: The LLM generates the final response.
+Updates: Users can directly update their Ctrl AIs. AI agents can suggest updates (requiring user approval).
+Streaming Updates (Future): AI agents can subscribe to changes.
+
+### 5.5. Extensibility Mechanisms
+
+Custom Types and Properties: Developers can define custom type values and add custom properties within the value field (using JSON-LD's extensibility).
+Versioning: The protocol uses semantic versioning (SemVer).
+
+## 6. Project Roadmap
+
+The Ctrl AI project is developed in phases:
+
+Phase 1: MVP: Core functionality, individual users.
+Phase 2: Enhanced Individual Ctrl AIs.
+Phase 3: Organizational Ctrl AIs.
+Phase 4: Advanced Features.
+Phase 5: Decentralization and Community Growth.
+See the Implementation Plan of reference implementation for more details.
+
+## 7. Open Source and Community
+
+Licensing: MIT License (or Apache 2.0).
+Contribution Guidelines: [Link to Contribution Guidelines (Create this file)]
+Community Channels: [Link to Discord Server]
+
+## 8. Sustainability
+
+Ctrl AI will have Open Source reference implementation and also offering of managed, cloud-based service.
+
+## 9. Conclusion
+
+Ctrl AI is poised to revolutionize human-AI interaction. We invite you to join our community, contribute to the project, and help us build the future of AI.
+
+Call to Action:
+
+Join our Discord server: [Link]
+Contribute on GitHub: [Link to ctrlai-core repo]
+Build on Ctrl AI!

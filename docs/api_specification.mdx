@@ -1,0 +1,85 @@
+
+# Ctrl AI: API Specification (Protocol Summary)
+
+**Version:** 1.0
+**Date:** 2025-02-17
+
+## 1. Introduction
+
+This document summarizes the *protocol-level* aspects of the Ctrl AI API.  It describes the general principles and data formats, *without* specifying the exact endpoints of any particular implementation.
+
+**For the complete, interactive API specification of a specific Ctrl AI implementation (including all endpoints and schemas), please refer to the Swagger UI documentation provided by that implementation.**  For example, the reference implementation provides this documentation at `[Implementation-Specific URL]/docs`.
+
+## 2. Base URL
+
+The base URL for a Ctrl AI API is implementation-specific.  Each implementation will provide its own base URL.
+
+## 3. Authentication
+
+Ctrl AI implementations *must* use **OAuth 2.0 and OpenID Connect** for authentication.  This ensures secure and standardized access control.  Specific details of the OAuth 2.0 flow (e.g., authorization URLs, token URLs) will be provided by each implementation.
+
+## 4. Data Formats
+
+*   **Request Body:** `application/json`
+*   **Response Body:** `application/json` (with the intention to transition to `application/ld+json` in the future for full JSON-LD compliance).  All data exchanged with the API *must* conform to the [Ctrl AI JSON Schema](.../path/to/schema.json).
+
+## 5. Error Handling
+
+Ctrl AI APIs use standard HTTP status codes to indicate success or failure.  Error responses *should* be in JSON format, with at least a `detail` field providing a human-readable error message.
+
+```json
+{
+  "detail": "Error message describing the problem."
+}
+```
+
+Common error codes include:
+
+*   400 Bad Request: Invalid request data.
+*   401 Unauthorized: Missing or invalid authentication credentials.
+*   403 Forbidden: The user does not have permission to access the resource.
+*   404 Not Found: The requested resource was not found.
+*   429 Too Many Requests: Rate limit exceeded.
+*   500 Internal Server Error: An unexpected error occurred on the server.
+
+## 6. Interaction Model
+
+### 6.1. Querying Ctrl AIs
+
+Ctrl AI APIs must support querying Ctrl AIs based on:
+
+*   Vector Search: Clients should be able to provide a text query, which will be converted to a vector embedding and used to find semantically similar Ctrl AIs.
+*   Metadata Filtering: Clients must be able to filter Ctrl AIs based on their metadata, including:
+    *   type
+    *   scope
+    *   source
+    *   confidence
+    *   keywords
+    *   dateCreated, dateModified, expires, validFrom (timestamps)
+    *   Filtering operators:
+        *   Equal, Not equal, In List, Greater than, Lower than, Contains
+*   Combined Queries: Clients must be able to combine vector search and metadata filtering in a single query.
+*   Pagination: The API should support pagination for large result sets.
+
+## 6.2. Creating, Updating, and Deleting Ctrl AIs
+
+Ctrl AI APIs must provide mechanisms for:
+
+*   Creating new Ctrl AIs.
+*   Retrieving existing Ctrl AIs by ID.
+*   Updating existing Ctrl AIs.
+*   Deleting Ctrl AIs.
+
+## 6.3. Data Representation
+
+All Ctrl AI data exchanged with the API must conform to the Ctrl AI JSON Schema and use the terms defined in the Ctrl AI Custom Vocabulary.
+
+## 7. Extensibility
+The Ctrl AI protocol is designed to be extensible. Developers can:
+
+*   Define custom type values (following a namespaced convention, e.g., mycompany:my_custom_type).
+*   Add custom properties within the value field of a Ctrl AI (using JSON-LD's extensibility features).
+
+## 8. Versioning
+
+Ctrl AI implementations should use semantic versioning (SemVer) for their APIs.

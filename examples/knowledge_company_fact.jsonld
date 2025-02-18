@@ -1,0 +1,22 @@
+{
+    "@context": [
+      "https://schema.org/",
+      "https://ctrlai.com/schema/"
+    ],
+    "@type": "CtrlAI",
+    "id": "urn:uuid:b3c4d5e6-f789-0123-4567-890abcdef123",
+    "userId": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+    "ctrlaiGroupId": "urn:uuid:23456789-0abc-def1-2345-67890abcdef2",
+    "type": "knowledge:company_fact",
+    "value": "Company revenue for Q1 2024 was $10M.",
+    "source": "companyWiki",
+    "confidence": 0.95,
+    "dateCreated": "2024-01-28T12:00:00Z",
+    "dateModified": "2024-01-28T12:00:00Z",
+    "expires": null,
+    "validFrom": null,
+    "scope": "company",
+    "keywords": ["revenue", "q1", "2024", "company"],
+    "relatedEntities": [],
+    "embedding": [0.9, 0.8, 0.7, 0.6]
+  }

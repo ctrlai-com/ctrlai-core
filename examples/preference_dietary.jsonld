@@ -1,0 +1,24 @@
+{
+    "@context": [
+      "https://schema.org/",
+      "https://ctrlai.com/schema/"
+    ],
+    "@type": "CtrlAI",
+    "id": "urn:uuid:01234567-89ab-cdef-0123-456789abcdef",
+    "userId": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+    "ctrlaiGroupId": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+    "type": "preference:dietary",
+    "value": {
+      "@type": "DietaryRestriction",
+      "name": "Vegetarian"
+    },
+    "source": "userInput",
+    "confidence": 0.9,
+    "dateCreated": "2024-01-28T10:00:00Z",
+    "dateModified": "2024-01-28T10:00:00Z",
+    "expires": null,
+    "validFrom": null,
+    "scope": "personal",
+    "keywords": ["food", "vegetarian"],
+    "relatedEntities": []
+  }

@@ -1,0 +1,290 @@
+
+# Ctrl AI: Custom Vocabulary
+
+**Version:** 1.0
+**Date:** 2025-02-17
+
+## 1. Introduction
+
+This document defines the custom vocabulary for the Ctrl AI protocol. This vocabulary extends [Schema.org](https://schema.org/) with terms specific to Ctrl AI, ensuring interoperability and a shared understanding of the data.
+
+**Base URI:** `https://ctrlai.com/schema/` (This is a placeholder; you'll need to host this vocabulary at a publicly accessible URL).
+
+## 2. Types
+
+<DefinitionTable>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+      <th>Data Type</th>
+      <th>Expected Values / Range</th>
+      <th>Examples</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`CtrlAI`</td>
+      <td>The core entity representing a single piece of information within a Ctrl AI knowledge base.</td>
+      <td>Class</td>
+      <td>-</td>
+      <td>
+        Represents a user's preference, a piece of contextual information, or a knowledge snippet.
+      </td>
+    </tr>
+    <tr>
+        <td>`ctrlaiGroup`</td>
+        <td>The entity representing set of CtrlAIs</td>
+        <td>Class</td>
+        <td>-</td>
+        <td>
+          Set of CtrlAIs that could be grouped by user
+        </td>
+      </tr>
+    <tr>
+      <td>`preference`</td>
+      <td>A base type for representing user preferences.</td>
+      <td>Class</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>`preference:dietary`</td>
+      <td>A user's dietary preferences or restrictions.</td>
+      <td>Class (subClassOf `preference`)</td>
+      <td>-</td>
+      <td>"Vegetarian", "Vegan", "Gluten-free", "Peanut allergy"</td>
+    </tr>
+    <tr>
+      <td>`preference:communication_style`</td>
+      <td>A user's preferred communication style.</td>
+      <td>Class (subClassOf `preference`)</td>
+      <td>-</td>
+      <td>"Formal", "Informal", "Concise", "Detailed"</td>
+    </tr>
+    <tr>
+      <td>`preference:writing_style`</td>
+      <td>A user's preferred writing style.</td>
+      <td>Class (subClassOf `preference`)</td>
+      <td>-</td>
+      <td>"Short sentences", "No jargon", "Active voice"</td>
+    </tr>
+    <tr>
+        <td>`preference:personal_interest`</td>
+        <td>A user's personal interests.</td>
+        <td>Class (subClassOf `preference`)</td>
+        <td>-</td>
+        <td>"Reading", "Sport", "Movies"</td>
+      </tr>
+    <tr>
+      <td>`context`</td>
+      <td>A base type for representing contextual information.</td>
+      <td>Class</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>`context:project`</td>
+      <td>Information related to a specific project.</td>
+      <td>Class (subClassOf `context`)</td>
+      <td>-</td>
+      <td>"Project Alpha deadline", "Project Beta team members"</td>
+    </tr>
+    <tr>
+      <td>`context:location`</td>
+      <td>Information related to a user's location.</td>
+       <td>Class (subClassOf `context`)</td>
+      <td>-</td>
+      <td>"Working from home", "In a meeting"</td>
+    </tr>
+    <tr>
+      <td>`context:time_sensitive`</td>
+      <td>Information that is only valid for a specific period.</td>
+       <td>Class (subClassOf `context`)</td>
+      <td>-</td>
+      <td>"Looking for a new laptop until 2024-02-15"</td>
+    </tr>
+     <tr>
+        <td>`context:goal`</td>
+        <td>Information user's goals.</td>
+        <td>Class (subClassOf `context`)</td>
+        <td>-</td>
+        <td>"Finish project proposal", "Learn new framework"</td>
+      </tr>
+    <tr>
+      <td>`knowledge`</td>
+      <td>A base type for representing general knowledge.</td>
+      <td>Class</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>`knowledge:company_fact`</td>
+      <td>Factual information about the company.</td>
+       <td>Class (subClassOf `knowledge`)</td>
+      <td>-</td>
+      <td>"Company revenue", "Number of employees"</td>
+    </tr>
+    <tr>
+      <td>`knowledge:product_spec`</td>
+      <td>Specifications of a product.</td>
+      <td>Class (subClassOf `knowledge`)</td>
+      <td>-</td>
+      <td>"Product features", "Pricing information"</td>
+    </tr>
+    <tr>
+      <td>`knowledge:competitor_info`</td>
+      <td>Information about competitors.</td>
+       <td>Class (subClassOf `knowledge`)</td>
+      <td>-</td>
+      <td>"Competitor pricing", "Competitor market share"</td>
+    </tr>
+    <tr>
+      <td>`knowledge:personal_fact`</td>
+      <td>Factual information about the user.</td>
+       <td>Class (subClassOf `knowledge`)</td>
+      <td>-</td>
+      <td>"User's job title", "User's phone number"</td>
+    </tr>
+     <tr>
+          <td>`knowledge:calendar`</td>
+          <td>Information about user's calendar.</td>
+           <td>Class (subClassOf `knowledge`)</td>
+          <td>-</td>
+          <td>"User's meetings"</td>
+        </tr>
+      <tr>
+            <td>`knowledge:skills`</td>
+            <td>Information about user's skills.</td>
+             <td>Class (subClassOf `knowledge`)</td>
+            <td>-</td>
+            <td>"User's skills and level"</td>
+          </tr>
+       <tr>
+                <td>`knowledge:external`</td>
+                <td>Information from external data source.</td>
+                 <td>Class (subClassOf `knowledge`)</td>
+                <td>-</td>
+                <td>"Information from calendar, email, ...</td>
+              </tr>
+  </tbody>
+</DefinitionTable>
+
+## 3. Properties
+
+<DefinitionTable>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+      <th>Data Type</th>
+      <th>Range</th>
+      <th>Examples</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`id`</td>
+      <td>Unique identifier for the Ctrl AI.</td>
+      <td>`string`</td>
+      <td>`UUID` (URN format)</td>
+      <td>`urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef`</td>
+    </tr>
+    <tr>
+      <td>`userId`</td>
+      <td>Identifier of the user who owns the Ctrl AI.</td>
+      <td>`string`</td>
+      <td>`UUID` (URN format)</td>
+      <td>`urn:uuid:f0e9d8c7-b6a5-4321-fedc-ba9876543210`</td>
+    </tr>
+    <tr>
+       <td>`ctrlaiGroupId`</td>
+       <td>Identifier of CtrlAI group.</td>
+       <td>`string`</td>
+       <td>`UUID` (URN format)</td>
+       <td>`urn:uuid:f0e9d8c7-b6a5-4321-fedc-ba9876543210`</td>
+     </tr>
+    <tr>
+      <td>`type`</td>
+      <td>The type of Ctrl AI.</td>
+      <td>`string`</td>
+      <td>One of the defined Ctrl AI types (see above).</td>
+      <td>`preference:dietary`, `context:project`</td>
+    </tr>
+    <tr>
+      <td>`value`</td>
+      <td>The content of the Ctrl AI.</td>
+      <td>`string` or `object`</td>
+      <td>`string` (for simple values) or `JSON object` (for structured data)</td>
+      <td>"I prefer vegetarian food.", `{ "cuisine": "Italian", "dish": "pizza" }`</td>
+    </tr>
+    <tr>
+      <td>`source`</td>
+      <td>The source of the information.</td>
+      <td>`string`</td>
+      <td>-</td>
+      <td>`userInput`, `companyWiki`, `calendar`, `email`</td>
+    </tr>
+    <tr>
+      <td>`confidence`</td>
+      <td>The confidence level of the information.</td>
+      <td>`float`</td>
+      <td>0.0 to 1.0</td>
+      <td>`0.9`</td>
+    </tr>
+    <tr>
+      <td>`dateCreated`</td>
+      <td>The timestamp when the Ctrl AI was created.</td>
+      <td>`string`</td>
+      <td>ISO 8601 format</td>
+      <td>`2024-01-27T14:30:00Z`</td>
+    </tr>
+    <tr>
+      <td>`dateModified`</td>
+      <td>The timestamp when the Ctrl AI was last modified.</td>
+      <td>`string`</td>
+      <td>ISO 8601 format</td>
+      <td>`2024-01-27T14:30:00Z`</td>
+    </tr>
+    <tr>
+      <td>`expires`</td>
+      <td>The timestamp when the Ctrl AI expires (optional).</td>
+      <td>`string`</td>
+      <td>ISO 8601 format</td>
+      <td>`2024-02-15T23:59:59Z`</td>
+    </tr>
+    <tr>
+      <td>`validFrom`</td>
+      <td>The timestamp when the Ctrl AI becomes valid (optional).</td>
+      <td>`string`</td>
+      <td>ISO 8601 format</td>
+      <td>`2024-03-01T00:00:00Z`</td>
+    </tr>
+    <tr>
+      <td>`scope`</td>
+      <td>The scope of the information.</td>
+      <td>`string`</td>
+      <td>-</td>
+      <td>`personal`, `project:ProjectX`, `department:Marketing`, `company`</td>
+    </tr>
+    <tr>
+      <td>`keywords`</td>
+      <td>User-defined keywords.</td>
+      <td>`array` of `string`</td>
+      <td>-</td>
+      <td>`["food", "vegetarian", "italian"]`</td>
+    </tr>
+    <tr>
+      <td>`relatedEntities`</td>
+      <td>Links to other entities (optional).</td>
+      <td>`array` of `string`</td>
+      <td>-</td>
+      <td>`["urn:uuid:...", "https://example.com/resource"]`</td>
+    </tr>
+  </tbody>
+</DefinitionTable>
+
+## 4. Notes
+
+*   This vocabulary is designed to be extensible.  New types and properties can be added as needed.
+*   We encourage the use of existing Schema.org types and properties whenever possible.

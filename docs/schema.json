@@ -1,0 +1,126 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Ctrl AI",
+    "description": "Schema for a Ctrl AI entry.",
+    "type": "object",
+    "required": [
+      "@context",
+      "@type",
+      "id",
+      "userId",
+      "ctrlaiGroupId",
+      "type",
+      "value",
+      "source",
+      "confidence",
+      "dateCreated",
+      "dateModified",
+      "scope"
+    ],
+    "properties": {
+      "@context": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "minItems": 2,
+        "description": "JSON-LD context, defining vocabularies."
+      },
+      "@type": {
+        "type": "string",
+        "const": "CtrlAI",
+        "description": "The type of the entity (must be 'CtrlAI')."
+      },
+      "id": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+        "description": "Unique identifier for the Ctrl AI (UUID in URN format)."
+      },
+      "userId": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+        "description": "Identifier of the user who owns the Ctrl AI (UUID in URN format)."
+      },
+      "ctrlaiGroupId": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+        "description": "Identifier of the Ctrl AI group to which this Ctrl AI belongs (UUID in URN format)."
+      },
+      "type": {
+        "type": "string",
+        "description": "Type of Ctrl AI entry (e.g., 'preference:dietary', 'context:project').",
+        "examples": [
+          "preference:dietary",
+          "context:project",
+          "knowledge:company_fact"
+        ]
+      },
+      "value": {
+        "type": ["string", "object"],
+        "description": "The content of the Ctrl AI entry (text or structured data as JSON)."
+      },
+      "source": {
+        "type": "string",
+        "description": "Source of the information (e.g., 'userInput', 'companyWiki').",
+        "examples": ["userInput", "companyWiki", "calendar"]
+      },
+      "confidence": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "description": "Confidence level (0.0 to 1.0)."
+      },
+      "dateCreated": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Timestamp of creation (ISO 8601)."
+      },
+      "dateModified": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Timestamp of last modification (ISO 8601)."
+      },
+      "expires": {
+        "type": ["string", "null"],
+        "format": "date-time",
+        "description": "Timestamp when the Ctrl AI expires (optional - can be null)."
+      },
+      "validFrom": {
+        "type": ["string", "null"],
+        "format": "date-time",
+        "description": "Timestamp when the Ctrl AI becomes valid (optional - can be null)."
+      },
+      "scope": {
+        "type": "string",
+        "description": "Scope of the information (e.g., 'personal', 'project:ProjectX').",
+        "examples": ["personal", "project:ProjectX", "department:Marketing", "company"]
+      },
+      "keywords": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "User-defined keywords."
+      },
+      "relatedEntities": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": "Links to other entities (optional - URIs)."
+      },
+      "embedding": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "description": "Vector embedding representation of the value."
+      }
+    },
+    "additionalProperties": false
+  }
