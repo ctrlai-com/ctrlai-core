@@ -37,8 +37,12 @@ Documentation = "https://ctrlai-core.readthedocs.io/"
 "Bug Tracker" = "https://github.com/ctrl-ai/ctrlai-core/issues"
 
 [tool.poetry]
+name = "ctrlai-core"
+version = "1.0.0"
+description = "Core functionality for Ctrl AI"
+authors = ["Ctrl AI Team <info@ctrlai.com>"]
 packages = [
-    { include = "validation" }
+    { include = "ctrlai_core" }
 ]
 
 [tool.poetry.dependencies]
